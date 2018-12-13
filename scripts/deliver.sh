@@ -5,8 +5,5 @@ npm run build
 set +x
 
 set -x
-npm run start-prod & sleep 1
-echo $! > .pidfile
+pm2 restart all
 set +x
-
-exit
