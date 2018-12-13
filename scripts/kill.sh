@@ -1,0 +1,2 @@
+set -x
+killall node

@@ -1,0 +1,27 @@
+{
+  "name": "jenkins-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start-dev": "ts-node ./src/app.ts",
+    "start-prod": "node ./dist/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shaunxu/jenkins-test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shaunxu/jenkins-test/issues"
+  },
+  "homepage": "https://github.com/shaunxu/jenkins-test#readme",
+  "devDependencies": {
+    "@types/node": "^10.12.14",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.2.2"
+  }
+}
