@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc",
     "start-dev": "ts-node ./src/app.ts",
-    "start-prod": "node ./dist/app.js"
+    "start-prod": "node ./dist/app.js",
+    "test": "mocha -r ts-node/register test/**/*.spec.ts"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,9 @@
   },
   "homepage": "https://github.com/shaunxu/jenkins-test#readme",
   "devDependencies": {
+    "@types/mocha": "^5.2.5",
     "@types/node": "^10.12.14",
+    "mocha": "^5.2.0",
     "ts-node": "^7.0.1",
     "typescript": "^3.2.2"
   }
