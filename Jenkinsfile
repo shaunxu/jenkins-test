@@ -18,7 +18,7 @@ pipeline {
     }
     stage('deploy') {
       steps {
-        sh 'pm2 restart all'
+        sh 'pm2 startOrReload ecosystem.config.js'
       }
     }
   }
