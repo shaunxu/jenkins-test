@@ -1,6 +1,11 @@
 pipeline {
   agent any
   stages {
+    stage('start') {
+      steps {
+        sh '/Users/shaunxu/github/wt-rd-pipeline/packages/agent/node_modules/.bin/ts-node /Users/shaunxu/github/wt-rd-pipeline/packages/agent/src/index.ts --pipeline=5c4034b045871184af1ed67a --event=start'
+      }
+    }
     stage('install') {
       steps {
         sh 'npm i'
@@ -16,9 +21,9 @@ pipeline {
         sh 'npm test'
       }
     }
-    stage('deploy') {
+    stage('end') {
       steps {
-        sh 'pm2 startOrReload ecosystem.config.js'
+        sh '/Users/shaunxu/github/wt-rd-pipeline/packages/agent/node_modules/.bin/ts-node /Users/shaunxu/github/wt-rd-pipeline/packages/agent/src/index.ts --pipeline=5c4034b045871184af1ed67a --event=end'
       }
     }
   }
