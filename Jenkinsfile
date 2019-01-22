@@ -1,5 +1,9 @@
 pipeline {
   agent any
+  environment{
+    JENKINS_USER = 'admin'
+    JENKINS_PASS = '11111111'
+  }
   stages {
     stage('start') {
       steps {
