@@ -29,7 +29,6 @@ pipeline {
         echo "env.JENKINS_URL = ${env.JENKINS_URL}"
         echo "env.BUILD_URL = ${env.BUILD_URL}"
         echo "env.JOB_URL = ${env.JOB_URL}"
-        echo "currentBuild.getBuildCauses = ${currentBuild.getBuildCauses}"
         echo "currentBuild.number = ${currentBuild.number}"
         echo "currentBuild.result = ${currentBuild.result}"
         echo "currentBuild.currentResult = ${currentBuild.currentResult}"
