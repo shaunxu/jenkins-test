@@ -1,9 +1,5 @@
 pipeline {
   agent any
-  environment{
-    JENKINS_USER = 'admin'
-    JENKINS_PASS = '11111111'
-  }
   stages {
     stage('start') {
       steps {
@@ -11,7 +7,12 @@ pipeline {
           /Users/shaunxu/github/wt-rd-pipeline/packages/agent/node_modules/.bin/ts-node \
           /Users/shaunxu/github/wt-rd-pipeline/packages/agent/src/index.ts \
           --pipeline=5c4034b045871184af1ed67a \
-          --event=start \
+          --job-name=${env.JOB_NAME} \
+          --build-id=${env.BUILD_ID} \
+          --build-tag=${env.BUILD_TAG} \
+          --jenkins-home=${env.JENKINS_HOME} \
+          --build-url=${env.BUILD_URL} \
+          --action=BEGIN
         """
       }
     }
@@ -32,22 +33,14 @@ pipeline {
     }
   }
   post {
-    success {
+    always {
       sh """\
         /Users/shaunxu/github/wt-rd-pipeline/packages/agent/node_modules/.bin/ts-node \
         /Users/shaunxu/github/wt-rd-pipeline/packages/agent/src/index.ts \
         --pipeline=5c4034b045871184af1ed67a \
-        --event=end \
-        --is-success=1 \
-      """
-    }
-    unsuccessful {
-      sh """\
-        /Users/shaunxu/github/wt-rd-pipeline/packages/agent/node_modules/.bin/ts-node \
-        /Users/shaunxu/github/wt-rd-pipeline/packages/agent/src/index.ts \
-        --pipeline=5c4034b045871184af1ed67a \
-        --event=end \
-        --is-success=0 \
+        --build-tag=${env.BUILD_TAG} \
+        --build-result=${currentBuild.currentResult} \
+        --action=END
       """
     }
   }
