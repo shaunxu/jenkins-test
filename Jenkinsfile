@@ -42,6 +42,7 @@ pipeline {
           .getBuildByNumber(Integer.parseInt(env.BUILD_NUMBER))
           .logFile
           .text
+          .replace("\n", "\\n")
       }
       sh """\
         /Users/shaunxu/github/wt-rd-pipeline/packages/agent/node_modules/.bin/ts-node \
@@ -52,7 +53,7 @@ pipeline {
         --jenkins-home=${env.JENKINS_HOME} \
         --job-name=${env.JOB_NAME} \
         --build-id=${env.BUILD_ID} \
-        --log-content=${logContent} \
+        --log-content="${logContent}" \
         --action=END
       """
     }
