@@ -10,7 +10,6 @@ pipeline {
           --job-name=${env.JOB_NAME} \
           --build-id=${env.BUILD_ID} \
           --build-tag=${env.BUILD_TAG} \
-          --jenkins-home=${env.JENKINS_HOME} \
           --build-url=${env.BUILD_URL} \
           --action=BEGIN
         """
@@ -40,6 +39,7 @@ pipeline {
         --pipeline=5c4034b045871184af1ed67a \
         --build-tag=${env.BUILD_TAG} \
         --build-result=${currentBuild.currentResult} \
+        --jenkins-home=${env.JENKINS_HOME} \
         --action=END
       """
     }
