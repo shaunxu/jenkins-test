@@ -40,6 +40,8 @@ pipeline {
         --build-tag=${env.BUILD_TAG} \
         --build-result=${currentBuild.currentResult} \
         --jenkins-home=${env.JENKINS_HOME} \
+        --job-name=${env.JOB_NAME} \
+        --build-id=${env.BUILD_ID} \
         --action=END
       """
     }
