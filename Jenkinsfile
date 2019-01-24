@@ -1,5 +1,3 @@
-def logContent = ""
-
 pipeline {
   agent any
   stages {
@@ -35,25 +33,13 @@ pipeline {
   }
   post {
     always {
-      script {
-        logContent = Jenkins
-          .getInstance()
-          .getItemByFullName(env.JOB_NAME)
-          .getBuildByNumber(Integer.parseInt(env.BUILD_NUMBER))
-          .logFile
-          .text
-          .replace("\n", "\\n")
-      }
       sh """\
         /Users/shaunxu/github/wt-rd-pipeline/packages/agent/node_modules/.bin/ts-node \
         /Users/shaunxu/github/wt-rd-pipeline/packages/agent/src/index.ts \
         --pipeline=5c4034b045871184af1ed67a \
         --build-tag=${env.BUILD_TAG} \
         --build-result=${currentBuild.currentResult} \
-        --jenkins-home=${env.JENKINS_HOME} \
-        --job-name=${env.JOB_NAME} \
-        --build-id=${env.BUILD_ID} \
-        --log-content="${logContent}" \
+        --log-path= ${env.JENKINS_HOME}/jobs/${env.JOB_NAME}/builds/${env.BUILD_ID}/log\
         --action=END
       """
     }
