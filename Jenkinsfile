@@ -39,7 +39,7 @@ pipeline {
         --pipeline=5c4034b045871184af1ed67a \
         --build-tag=${env.BUILD_TAG} \
         --build-result=${currentBuild.currentResult} \
-        --log-path= ${env.JENKINS_HOME}/jobs/${env.JOB_NAME}/builds/${env.BUILD_ID}/log\
+        --log-path="${env.JENKINS_HOME}/jobs/${env.JOB_NAME}/builds/${env.BUILD_ID}/log" \
         --action=END
       """
     }
