@@ -7,7 +7,8 @@
     "build": "tsc",
     "start-dev": "ts-node ./src/app.ts",
     "start-prod": "node ./dist/app.js",
-    "test": "mocha -r ts-node/register test/**/*.spec.ts"
+    "test": "nyc --reporter=html --reporter=text mocha --exit --reporter spec -r ts-node/register test/**/*.spec.ts",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,9 @@
   "devDependencies": {
     "@types/mocha": "^5.2.5",
     "@types/node": "^10.12.14",
+    "coveralls": "^3.0.3",
     "mocha": "^5.2.0",
+    "nyc": "^13.3.0",
     "ts-node": "^7.0.1",
     "typescript": "^3.2.2"
   }

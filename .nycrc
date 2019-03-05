@@ -1,0 +1,15 @@
+{
+    "extension": [
+      ".ts"
+    ],
+    "include": [
+      "src/**/*.ts"
+    ],
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "all": true,
+    "cache": false,
+    "sourceMap": true
+  }
