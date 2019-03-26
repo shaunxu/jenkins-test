@@ -33,7 +33,7 @@ pipeline {
   post {
     always {
         sh """\
-          /Users/shaunxu/github/wt-rd-pipeline/packages/agent_rust/target/debug/wt_pl_agent \
+          /Users/shaunxu/github/wt-rd-pipeline/packages/agent/target/debug/wt_pl_agent \
           --pipeline=5c4034b045871184af1ed67a \
           --job-name=${env.JOB_NAME} \
           --build-id=${env.BUILD_ID} \
