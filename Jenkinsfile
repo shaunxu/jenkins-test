@@ -32,7 +32,15 @@ pipeline {
   }
   post {
     always {
-      sh './test-wtctl.sh --tocken=S1ShAHwuE'
+        sh """\
+          /Users/shaunxu/github/wt-rd-pipeline/packages/agent_rust/target/debug/agent_rust \
+          --pipeline=5c4034b045871184af1ed67a \
+          --job-name=${env.JOB_NAME} \
+          --build-id=${env.BUILD_ID} \
+          --build-tag=${env.BUILD_TAG} \
+          --build-url=${env.BUILD_URL} \
+          --action=BEGIN
+        """
     }
   }
 }
