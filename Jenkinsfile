@@ -32,7 +32,7 @@ pipeline {
   }
   post {
     always {
-      sh "cat ${currentBuild.rawBuild.log}"
+      sh "echo ${env.BUILD_TAG}"
       // sh """\
       //   /Users/shaunxu/github/wt-rd-pipeline/packages/agent/target/debug/wt_pl_agent \
       //   --pipeline=5c4034b045871184af1ed67a \
